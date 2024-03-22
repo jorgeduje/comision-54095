@@ -1,0 +1,1 @@
+export let caja1 = {backgroundColor:"red", padding: {xs: "20px", sm:"120px"}}
