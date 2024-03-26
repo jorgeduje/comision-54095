@@ -1,9 +1,9 @@
 import ProductCard from "../../common/productCard/ProductCard";
 
-const ItemListContainer = () => {
+const ItemListContainer = ({gretting}) => {
   return (
     <div>
-      <h1>Bienvenidos a mi tienda</h1>
+      <h1>{gretting}</h1>
 
       {/* ACA VAN A IR LAS TARJETAS */}
 

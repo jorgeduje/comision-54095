@@ -1,8 +1,13 @@
 import { FaCartShopping } from "react-icons/fa6";
 
-export const Navbar = () => {
+export const Navbar = (  ) => {
+  
+  
+
   return (
     <div>
+      
+
         <h3>aca el Logo</h3>
         <ul>
           <li>Todas</li>
@@ -12,6 +17,7 @@ export const Navbar = () => {
         
         <h3>Aca las cantidades</h3>
         <FaCartShopping color="peru" size="2rem" />
+
     </div>
   )
 }
