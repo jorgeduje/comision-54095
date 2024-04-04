@@ -1,8 +1,8 @@
 
 
-const ProductCard = ( props ) => {
+const ProductCard = ( {titulo, descripcion, precio} ) => {
 
-    const {titulo, descripcion, precio} = props
+    // const {titulo, descripcion, precio} = props
 
   return (
     <div>
