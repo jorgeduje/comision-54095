@@ -1,39 +1,29 @@
-import ProductCard from "../../common/productCard/ProductCard";
+import { useState } from "react";
+import { products } from "../../../productsMock";
+import { useEffect } from "react";
+import ItemList from "./ItemList";
 
-const ItemListContainer = ({gretting}) => {
-  return (
-    <div>
-      <h1>{gretting}</h1>
+const ItemListContainer = () => {
+  const [items, setItems] = useState([]);
+  const [error, setError] = useState(null);
 
-      {/* ACA VAN A IR LAS TARJETAS */}
+  useEffect(() => {
+    
+    const getProducts = new Promise((resolve, reject) => {
+      let x = false;
+      if (x) {
+        setTimeout(() => {
+          resolve(products);
+        }, 2000);
+      } else {
+        reject({ status: 400, message: "no estas autorizado" });
+      }
+    });
 
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          gap: "40px",
-          backgroundColor: "steelblue",
-        }}
-      >
-        <ProductCard
-          precio={200}
-          titulo={"titulo 1"}
-          descripcion={"descripcion 1"}
-        />
-        <ProductCard
-          precio={300}
-          titulo={"titulo 2"}
-          descripcion={"descripcion 2"}
-        />
-        <ProductCard
-          precio={400}
-          titulo={"titulo 3"}
-          descripcion={"descripcion 3"}
-        />
-      </div>
-    </div>
-  );
+    getProducts.then((res) => setItems(res)).catch((error) => setError(error));
+  }, []);
+
+  return <ItemList items={items} error={error} />;
 };
 
 export default ItemListContainer;
