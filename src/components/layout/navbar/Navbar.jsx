@@ -1,23 +1,21 @@
-import { FaCartShopping } from "react-icons/fa6";
-
-export const Navbar = (  ) => {
-  
-  
-
+import CartWidget from "../../common/cartWidget/CartWidget";
+import "./Navbar.css";
+export const Navbar = () => {
   return (
     <div>
-      
-
-        <h3>aca el Logo</h3>
-        <ul>
-          <li>Todas</li>
-          <li>Urbanas</li>
-          <li>Deportivas</li>
-        </ul>
-        
-        <h3>Aca las cantidades</h3>
-        <FaCartShopping color="peru" size="2rem" />
-
+      <>
+        <div className="containerNavbar">
+          <li to="/" style={{ color: "beige" }}>
+            Comision 54030
+          </li>
+          <ul className="categories">
+            <li to="/">Todas</li>
+            <li to="/category/urbanas">Urbanas</li>
+            <li to="/category/deportivas">Deportivas</li>
+          </ul>
+          <CartWidget />
+        </div>
+      </>
     </div>
-  )
-}
+  );
+};
