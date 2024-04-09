@@ -1,11 +1,12 @@
 import { Layout } from "./components/layout/Layout";
-import ItemListContainer from "./components/pages/itemListContainer/ItemListContainer";
+import CreateUsers from "./components/pages/fetchingData/CreateUsers";
+import FetchingData from "./components/pages/fetchingData/FetchingData";
 
 function App() {
   return (
     <div>
       <Layout>
-        <ItemListContainer /> 
+        <CreateUsers />
       </Layout>
     </div>
   );
