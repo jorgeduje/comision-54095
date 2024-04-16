@@ -10,7 +10,7 @@ const ItemListContainer = () => {
   useEffect(() => {
     
     const getProducts = new Promise((resolve, reject) => {
-      let x = false;
+      let x = true;
       if (x) {
         setTimeout(() => {
           resolve(products);
