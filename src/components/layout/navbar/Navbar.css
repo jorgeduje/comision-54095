@@ -23,7 +23,7 @@
     align-items: center;
     gap: 20px;
   }
-  .categories li {
+  .categories a {
     background-color: beige;
     padding: 10px 20px;
     color: #7f669d;
@@ -34,7 +34,7 @@
     align-items: center;
     text-align: center;
   }
-  .categories li:hover {
+  .categories a:hover {
     background-color: rgb(206, 206, 198);
   }
   
