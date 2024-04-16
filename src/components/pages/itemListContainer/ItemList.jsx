@@ -1,9 +1,8 @@
 import ProductCard from "../../common/productCard/ProductCard";
 
 const ItemList = ({ items, error }) => {
-
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "space-evenly" }}>
       {items.map(({ id, title, description, price, img }) => {
         return (
           <ProductCard
@@ -17,10 +16,7 @@ const ItemList = ({ items, error }) => {
         );
       })}
 
-      {
-        error && <h2>{error.message}</h2> 
-      }
-     
+      {error && <h2>{error.message}</h2>}
     </div>
   );
 };
