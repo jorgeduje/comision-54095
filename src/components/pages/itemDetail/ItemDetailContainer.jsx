@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom"
 const ItemDetailContainer = () => {
 
   const { id } = useParams()
-  console.log(id)
 
   const [item, setItem] = useState({})
 
@@ -22,9 +21,25 @@ const ItemDetailContainer = () => {
 
   }, [id])
 
-  console.log(item)
+  const onAdd = (cantidad) => {
+    // console.log(item)
+    // console.log(cantidad)
+
+    let objetoCompleto = {...item, quantity: cantidad }
+    //agreguemos
+    console.log(objetoCompleto)
+  }
     
-  return <ItemDetail item={item} />;
+  return <ItemDetail item={item} onAdd={onAdd} />;
 };
 
 export default ItemDetailContainer;
+
+// const sumar = (a)=>{
+//   ...item
+//   cantidad: 10
+// }
+
+
+
+// sumar(10)
