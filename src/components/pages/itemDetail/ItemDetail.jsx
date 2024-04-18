@@ -1,11 +1,28 @@
-
-
-const ItemDetail = ({item}) => {
+import "./ItemDetail.css"
+const ItemDetail = ({ item }) => {
   return (
     <div>
-      {item.title}
-    </div>
-  )
-}
+      <div className={"containerItemDetail"}>
+        <div className={"containerImage"}>
+          <img src={item.img} alt="" />
+        </div>
 
-export default ItemDetail
+        <div className={"containerDetail"}>
+          <h2 style={{ fontFamily: "monospace" }}>
+            <span style={{ fontSize: "23px" }}>Nombre:</span> {item.title}
+          </h2>
+          <h2 style={{ fontFamily: "monospace" }}>
+            <span style={{ fontSize: "23px" }}>Descripcion:</span>{" "}
+            {item.description}
+          </h2>
+          <h2 style={{ fontFamily: "monospace" }}>
+            <span style={{ fontSize: "23px" }}>Precio:</span> ${item.price}.-
+          </h2>
+        </div>
+      </div>
+   
+    </div>
+  );
+};
+
+export default ItemDetail;
