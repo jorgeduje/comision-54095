@@ -1,31 +1,16 @@
-import { useState, useEffect } from "react";
-import ItemListContainer from "../../pages/itemListContainer/ItemListContainer";
+import { useState } from "react";
+
 import CounterPresentacional from "./CounterPresentacional";
 
-export const CounterContainer = () => {
-  const [contador, setContador] = useState(1);
-  const [nombre, setNombre] = useState("pepe");
-
-  useEffect(() => {
-    setContador(contador + 1);
-  }, []);
-
-  //  useEffect( ()=>{
-  //   console.log("me ejecuto dentro del effect")
-  // }) // SIN ARRAY DE DEPENDENCIAS
-
-  // useEffect( ()=>{
-  //   console.log("me ejecuto dentro del effect")
-  // }, []) // ARRAY DE DEPENDENCIAS
-
-  // useEffect( ()=>{
-  //   console.log("me ejecuto dentro del effect")
-  // }, [ nombre ]) // ARRAY DE DEPENDENCIAS
-
-  console.log("me ejecuto siempre");
+export const CounterContainer = ( {stock, initial=1, onAdd } ) => {
+  const [contador, setContador] = useState(initial);
 
   const sumar = () => {
-    setContador(contador + 1);
+    if( contador < stock ){
+      setContador(contador + 1);
+    }else{
+      alert("maximo en stock")
+    }
   };
 
   const restar = () => {
@@ -36,13 +21,14 @@ export const CounterContainer = () => {
     }
   };
 
-  console.log(nombre);
+
 
   let objectProps = {
     restar,
     sumar,
     contador,
-    setNombre,
+    onAdd
+ 
   };
 
   return (

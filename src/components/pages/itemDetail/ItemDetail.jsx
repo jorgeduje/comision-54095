@@ -1,5 +1,6 @@
+import { CounterContainer } from "../../common/counter/CounterContainer";
 import "./ItemDetail.css"
-const ItemDetail = ({ item }) => {
+const ItemDetail = ({ item, onAdd }) => {
   return (
     <div>
       <div className={"containerItemDetail"}>
@@ -20,6 +21,8 @@ const ItemDetail = ({ item }) => {
           </h2>
         </div>
       </div>
+      <CounterContainer stock={item.stock} onAdd={onAdd} />
+
    
     </div>
   );
