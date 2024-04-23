@@ -17,7 +17,7 @@ function App() {
           <Route path="/cart" element={<CartContainer />} />
           <Route path="/checkout" element={<Checkout />} />
 
-          <Route path="*" element={<h1>Error bla bla bla</h1>} />
+          <Route path="*" element={<h1>Error 404 not found</h1>} />
         </Route>
       </Routes>
     </BrowserRouter>
