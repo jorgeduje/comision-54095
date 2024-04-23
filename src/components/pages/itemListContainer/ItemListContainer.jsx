@@ -4,12 +4,10 @@ import { useEffect } from "react";
 import ItemList from "./ItemList";
 import { useParams, useNavigate } from "react-router-dom";
 
-
 const ItemListContainer = () => {
+  const navigate = useNavigate(); // funcion ---> navigate("/cart")
+  const { name } = useParams();
 
-  const navigate = useNavigate() // funcion ---> navigate("/cart")
-  const {name} = useParams()
-  console.log(name)
   // name ---> un string ---> truthy
   // name ---> undefined ---> falsy
 
@@ -17,13 +15,14 @@ const ItemListContainer = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-
-    let productsFiltered = products.filter( product => product.category === name)
+    let productsFiltered = products.filter(
+      (product) => product.category === name
+    );
 
     const getProducts = new Promise((resolve, reject) => {
       let x = true;
       if (x) {
-        resolve( name ? productsFiltered : products);
+        resolve(name ? productsFiltered : products);
       } else {
         reject({ status: 400, message: "no estas autorizado" });
       }
@@ -40,12 +39,10 @@ const ItemListContainer = () => {
 
 export default ItemListContainer;
 
-
 // const agregarAlCarrito = ()=>{
 //   // aca va la logica
 
 //   navigate("/cart")
 // }
 
-
-// <button onClick>Agreggar 
+// <button onClick>Agreggar
