@@ -3,17 +3,20 @@ import { products } from "../../../productsMock";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../../context/CartContext";
+import Swal from "sweetalert2";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
 
   const [item, setItem] = useState({});
 
-  const { addToCart } = useContext(CartContext)
+  const { addToCart, getQuantityById } = useContext(CartContext);
+
+  let initial = getQuantityById(+id);
 
   useEffect(() => {
     let itemEncontrado = products.find((product) => product.id === +id);
-    const getProduct = new Promise((resolve, reject) => {
+    const getProduct = new Promise((resolve) => {
       resolve(itemEncontrado);
     });
 
@@ -23,12 +26,18 @@ const ItemDetailContainer = () => {
   const onAdd = (cantidad) => {
     let product = { ...item, quantity: cantidad };
 
-    addToCart( product )
-    // la funcion addToCart
-    
+    addToCart(product);
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Se agrego",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
-  return <ItemDetail item={item} onAdd={onAdd} />;
+  return <ItemDetail item={item} onAdd={onAdd} initial={initial} />;
 };
 
 export default ItemDetailContainer;
