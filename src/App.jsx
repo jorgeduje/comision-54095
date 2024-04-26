@@ -5,6 +5,7 @@ import CartContainer from "./components/pages/cart/CartContainer";
 import { Layout } from "./components/layout/Layout";
 import { Checkout } from "./components/pages/checkout/Checkout";
 import CartContextProvider from "./context/CartContext";
+import { CheckoutFormik } from "./components/pages/checkoutFormik/CheckoutFormik";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
             <Route path="/category/:name" element={<ItemListContainer />} />
 
             <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout" element={<CheckoutFormik />} />
             <Route path="/cart" element={<CartContainer />} />
 
             <Route path="*" element={<h1>Error 404 not found</h1>} />
