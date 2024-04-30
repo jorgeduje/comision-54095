@@ -1,38 +1,49 @@
 import { useState } from "react";
-import { products } from "../../../productsMock";
+
 import { useEffect } from "react";
 import ItemList from "./ItemList";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 import { Skeleton } from "@mui/material";
+import { db } from "../../../firebaseConfig";
+
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
-  const navigate = useNavigate(); // funcion ---> navigate("/cart")
   const { name } = useParams();
-
-  // name ---> un string ---> truthy
-  // name ---> undefined ---> falsy
 
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let productsFiltered = products.filter(
-      (product) => product.category === name
-    );
+    // const productsCollection = collection(db, "products");
+    // getDocs(productsCollection).then((res) => {
+    //   let newArray = res.docs.map((doc) => {
+    //     return { id: doc.id, ...doc.data() };
+    //   }); // []
+    //   setItems(newArray);
+    // });
 
-    const getProducts = new Promise((resolve, reject) => {
-      let x = true;
-      if (x) {
-        setTimeout(() => {
-          resolve(name ? productsFiltered : products);
-        }, 3000);
-      } else {
-        reject({ status: 400, message: "no estas autorizado" });
-      }
+    // const productsCollection = collection(db, "products");
+    // let consulta = query(productsCollection, where("category", "==", name));
+    // getDocs(consulta).then((res) => {
+    //   let newArray = res.docs.map((doc) => {
+    //     return { id: doc.id, ...doc.data() };
+    //   }); // []
+    //   setItems(newArray);
+    // });
+
+    const productsCollection = collection(db, "products");
+    let consulta = productsCollection;
+    if (name) {
+      consulta = query(productsCollection, where("category", "==", name));
+    }
+    getDocs(consulta).then((res) => {
+      let newArray = res.docs.map((doc) => {
+        return { id: doc.id, ...doc.data() };
+      }); // []
+      setItems(newArray);
     });
-
-    getProducts.then((res) => setItems(res)).catch((error) => setError(error));
   }, [name]);
 
   if (items.length === 0) {
@@ -111,9 +122,6 @@ const ItemListContainer = () => {
       ) : (
         <BounceLoader color="steelblue" size={50} />
       )}
-
-      {/* <h1>Aca van los productos</h1>
-      <ItemList items={items} error={error} /> */}
     </>
   );
 };
