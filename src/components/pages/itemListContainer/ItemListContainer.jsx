@@ -7,7 +7,8 @@ import { BounceLoader } from "react-spinners";
 import { Skeleton } from "@mui/material";
 import { db } from "../../../firebaseConfig";
 
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { products } from "../../../productsMock";
 
 const ItemListContainer = () => {
   const { name } = useParams();
@@ -45,6 +46,11 @@ const ItemListContainer = () => {
       setItems(newArray);
     });
   }, [name]);
+
+  // const addDocsProducts = () => {
+  //   let productsCollection = collection(db, "products");
+  //   products.forEach((product) => addDoc(productsCollection, product));
+  // };
 
   if (items.length === 0) {
     return (
@@ -122,6 +128,7 @@ const ItemListContainer = () => {
       ) : (
         <BounceLoader color="steelblue" size={50} />
       )}
+      {/* <button onClick={addDocsProducts}>Agregar documentos</button> */}
     </>
   );
 };
