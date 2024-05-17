@@ -13,7 +13,7 @@ export const CounterContainer = ({ stock, initial = 1, onAdd }) => {
     }
     if (navigator.vibrate) {
       // Hacer vibrar el dispositivo
-      navigator.vibrate(100); // La duración de la vibración es de 200 milisegundos
+      navigator.vibrate(50); // La duración de la vibración es de 200 milisegundos
     }
   };
 
