@@ -2,14 +2,18 @@ import { useState } from "react";
 
 import CounterPresentacional from "./CounterPresentacional";
 
-export const CounterContainer = ( {stock, initial=1, onAdd } ) => {
+export const CounterContainer = ({ stock, initial = 1, onAdd }) => {
   const [contador, setContador] = useState(initial);
 
   const sumar = () => {
-    if( contador < stock ){
+    if (contador < stock) {
       setContador(contador + 1);
-    }else{
-      alert("maximo en stock")
+    } else {
+      alert("maximo en stock");
+    }
+    if (navigator.vibrate) {
+      // Hacer vibrar el dispositivo
+      navigator.vibrate(200); // La duración de la vibración es de 200 milisegundos
     }
   };
 
@@ -21,18 +25,12 @@ export const CounterContainer = ( {stock, initial=1, onAdd } ) => {
     }
   };
 
-
-
   let objectProps = {
     restar,
     sumar,
     contador,
-    onAdd
- 
+    onAdd,
   };
 
-  return (
-    <CounterPresentacional {...objectProps} />
-  );
+  return <CounterPresentacional {...objectProps} />;
 };
-
