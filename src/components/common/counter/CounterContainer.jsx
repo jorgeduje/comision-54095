@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import CounterPresentacional from "./CounterPresentacional";
-import audioio from "../../../assets/bubble.wav";
+import audioio from "../../../assets/vibration.wav";
 
 export const CounterContainer = ({ stock, initial = 1, onAdd }) => {
   const [contador, setContador] = useState(initial);
