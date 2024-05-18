@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 import CounterPresentacional from "./CounterPresentacional";
-import audioio from "../../../assets/Messenger.mp3";
+import audioio from "../../../assets/bubble.wav";
+
 export const CounterContainer = ({ stock, initial = 1, onAdd }) => {
   const [contador, setContador] = useState(initial);
   const isAndroid = () => {
@@ -12,11 +13,7 @@ export const CounterContainer = ({ stock, initial = 1, onAdd }) => {
     return /iPhone|iPad|iPod/.test(navigator.userAgent);
   };
   const sumar = () => {
-    if (contador < stock) {
-      setContador(contador + 1);
-    } else {
-      alert("maximo en stock");
-    }
+    setContador(contador + 1);
     if (isAndroid()) {
       console.log(isAndroid());
       // Hacer vibrar el dispositivo solo si es Android
